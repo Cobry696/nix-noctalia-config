@@ -1,12 +1,12 @@
 { self, inputs, ...}: {
 
-  flake.nixosModules.myMachineConfiguration = { config, pkgs, inputs, ... }: {
+  flake.nixosModules.colbyConfiguration = { config, pkgs, inputs, ... }: {
     # Edit this configuration file to define what should be installed on
     # your system.  Help is available in the configuration.nix(5) man page
     # and in the NixOS manual (accessible by running ‘nixos-help’).
       imports =
         [ # Include the results of the hardware scan.
-          self.nixosModules.myMachineHardware
+          self.nixosModules.colbyHardware
           self.nixosModules.niri
         ];
       # Enable flakes
@@ -105,6 +105,8 @@
         #  thunderbird
         ];
       };
+
+      services.tailscale.enable = true;
        
       # Install firefox.
       programs.firefox.enable = true;
@@ -159,8 +161,6 @@
 	 wdisplays
 	 usbutils
 	 grsync
-	 blender
-	 tailscale
       ];
 
       # Set cursor environment variables system-wide
