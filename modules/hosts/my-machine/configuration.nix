@@ -159,6 +159,8 @@
 	 wdisplays
 	 usbutils
 	 grsync
+	 blender
+	 tailscale
       ];
 
       # Set cursor environment variables system-wide
