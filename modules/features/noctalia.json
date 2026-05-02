@@ -457,8 +457,8 @@
     },
     "dock": {
       "enabled": true,
-      "position": "bottom",
-      "displayMode": "auto_hide",
+      "position": "right",
+      "displayMode": "always_visible",
       "dockType": "floating",
       "backgroundOpacity": 1,
       "floatingRatio": 1,
@@ -467,11 +467,11 @@
       "monitors": [],
       "pinnedApps": [],
       "colorizeIcons": false,
-      "showLauncherIcon": false,
+      "showLauncherIcon": true,
       "launcherPosition": "end",
       "launcherUseDistroLogo": false,
       "launcherIcon": "",
-      "launcherIconColor": "none",
+      "launcherIconColor": "secondary",
       "pinnedStatic": false,
       "inactiveIndicators": false,
       "groupApps": false,
@@ -693,24 +693,24 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "winit": "/nix/store/4a7fczqqh6k0mlbzhh3j0pglhdg3kv5i-noctalia-shell-4.7.6/share/noctalia-shell/Assets/Wallpaper/noctalia.png"
+      "DP-3": "/nix/store/4a7fczqqh6k0mlbzhh3j0pglhdg3kv5i-noctalia-shell-4.7.6/share/noctalia-shell/Assets/Wallpaper/noctalia.png"
     },
     "desktopWidgetsEditMode": false,
     "display": {
       "winit": {
-        "name": "winit",
         "connected": true,
-        "scale": 1,
-        "width": 1280,
         "height": 800,
-        "x": 0,
-        "y": 0,
-        "physical_width": 0,
+        "name": "winit",
         "physical_height": 0,
+        "physical_width": 0,
         "refresh_rate": 60000,
-        "vrr_supported": false,
+        "scale": 1,
+        "transform": "Flipped180",
         "vrr_enabled": false,
-        "transform": "Flipped180"
+        "vrr_supported": false,
+        "width": 1280,
+        "x": 0,
+        "y": 0
       }
     },
     "notificationsState": {

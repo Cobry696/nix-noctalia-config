@@ -26,8 +26,16 @@
       # networking.proxy.default = "http://user:password@proxy:port/";
       # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
     
+
+      # enable bluetooth
+      hardware.bluetooth.enable = true;
+      hardware.bluetooth.powerOnBoot = true;
+
       # Enable networking
       networking.networkmanager.enable = true;
+
+      # Enable battery monitoring
+      services.upower.enable = true;
     
       # Enable automounting
       services.udisks2.enable = true;
@@ -113,6 +121,16 @@
         enable = true;
         defaultEditor = true;
       };
+
+      programs.git = {
+	enable = true;
+      };
+
+      environment.etc."gitconfig".text = ''
+        [user]
+	  name = Cobry696
+	  email = colbypynn@gmail.com
+      '';
     
       # Allow unfree packages
       nixpkgs.config.allowUnfree = true;
@@ -141,7 +159,6 @@
 	 wdisplays
 	 usbutils
 	 grsync
-	 git
       ];
 
       # Set cursor environment variables system-wide
