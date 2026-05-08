@@ -263,7 +263,7 @@
       "settingsPanelSideBarCardStyle": false
     },
     "location": {
-      "name": "Sydney",
+      "name": "St. Anthony, Newfoundland",
       "weatherEnabled": true,
       "weatherShowEffects": true,
       "weatherTaliaMascotAlways": false,
@@ -297,7 +297,7 @@
     "wallpaper": {
       "enabled": true,
       "overviewEnabled": false,
-      "directory": "/home/colby/Pictures/Wallpapers",
+      "directory": "/home/colby/myNixOS/Wallpapers",
       "monitorDirectories": [],
       "enableMultiMonitorDirectories": false,
       "showHiddenFiles": false,
@@ -625,13 +625,13 @@
       "backlightDeviceMappings": []
     },
     "colorSchemes": {
-      "useWallpaperColors": false,
+      "useWallpaperColors": true,
       "predefinedScheme": "Noctalia (default)",
       "darkMode": true,
       "schedulingMode": "off",
       "manualSunrise": "06:30",
       "manualSunset": "18:30",
-      "generationMethod": "tonal-spot",
+      "generationMethod": "muted",
       "monitorForColors": "",
       "syncGsettings": true
     },
@@ -679,11 +679,62 @@
       "customCommands": "[]"
     },
     "desktopWidgets": {
-      "enabled": false,
+      "enabled": true,
       "overviewEnabled": true,
-      "gridSnap": false,
+      "gridSnap": true,
       "gridSnapScale": false,
-      "monitorWidgets": []
+      "monitorWidgets": [
+        {
+          "name": "DP-3",
+          "widgets": [
+            {
+              "clockColor": "none",
+              "clockStyle": "minimal",
+              "customFont": "",
+              "format": "h:mm AP\\nd MMMM yyyy",
+              "id": "Clock",
+              "roundedCorners": true,
+              "scale": 1,
+              "showBackground": true,
+              "useCustomFont": false,
+              "x": 2360,
+              "y": 1200
+            },
+            {
+              "id": "Weather",
+              "roundedCorners": true,
+              "scale": 1,
+              "showBackground": true,
+              "x": 40,
+              "y": 80
+            },
+            {
+              "diskPath": "/",
+              "id": "SystemStat",
+              "layout": "bottom",
+              "roundedCorners": true,
+              "scale": 1,
+              "showBackground": true,
+              "statType": "CPU",
+              "x": 40,
+              "y": 1280
+            },
+            {
+              "colorName": "primary",
+              "height": 144,
+              "hideWhenIdle": false,
+              "id": "AudioVisualizer",
+              "roundedCorners": true,
+              "scale": 1,
+              "showBackground": true,
+              "visualizerType": "linear",
+              "width": 320,
+              "x": 2200,
+              "y": 80
+            }
+          ]
+        }
+      ]
     }
   },
   "state": {
@@ -693,7 +744,7 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "DP-3": "/nix/store/4a7fczqqh6k0mlbzhh3j0pglhdg3kv5i-noctalia-shell-4.7.6/share/noctalia-shell/Assets/Wallpaper/noctalia.png"
+      "DP-3": "/home/colby/myNixOS/Wallpapers/Day.png"
     },
     "desktopWidgetsEditMode": false,
     "display": {

@@ -125,13 +125,13 @@
       };
 
       programs.git = {
-	enable = true;
+	      enable = true;
       };
 
       environment.etc."gitconfig".text = ''
         [user]
-	  name = Cobry696
-	  email = colbypynn@gmail.com
+	        name = Cobry696
+	        email = colbypynn@gmail.com
       '';
     
       # Allow unfree packages
@@ -146,34 +146,25 @@
       environment.systemPackages = with pkgs; [
          #vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
          wget
-         ghostty
-         brave
-         discord
-         spotify
-         heroic
-         rose-pine-cursor
-         vscode
+         ghostty   
          sddm-astronaut
-         gamescope
          kdePackages.dolphin
-         openrgb
-	 prismlauncher
-	 wdisplays
-	 usbutils
-	 grsync
+	       wdisplays
+	       usbutils
+	       python3
+         cargo
+         rustc
+         gcc
+         fastfetch
+         p7zip
+         wineWowPackages.base
+         curl
+         unzip
+
+         
       ];
 
-      # Set cursor environment variables system-wide
-      environment.sessionVariables = {
-        XCURSOR_THEME = "rose-pine-cursor";
-        XCURSOR_SIZE = "24";
-      };
-      
-      # For XWayland applications (legacy X11 support)
-      environment.variables = {
-        XCURSOR_THEME = "rose-pine-cursor";
-        XCURSOR_SIZE = "24";
-      };
+      home-manager.users.colby = self.homeModules.colbyModule;
     
       # Some programs need SUID wrappers, can be configured further or are
       # started in user sessions.

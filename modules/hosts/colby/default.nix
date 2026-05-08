@@ -2,7 +2,7 @@
 
   flake.nixosConfigurations.colby = inputs.nixpkgs.lib.nixosSystem {
     modules = [ 
-      self.nixosModules.myMachineConfiguration
+      self.nixosModules.colbyConfiguration
       self.nixosModules.myHomeManager
     ];
   };
