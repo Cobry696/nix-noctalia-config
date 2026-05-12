@@ -128,6 +128,8 @@
 	      enable = true;
       };
 
+      programs.nix-ld.enable = true;
+
       environment.etc."gitconfig".text = ''
         [user]
 	        name = Cobry696
@@ -160,6 +162,8 @@
          wineWowPackages.base
          curl
          unzip
+         btop
+         uv
 
          
       ];
