@@ -16,6 +16,7 @@
         # Include the results of the hardware scan.
         self.nixosModules.colbyHardware
         self.nixosModules.niri
+        # self.nixosModules.myFlatpaks
       ];
       # Enable flakes
       nix.settings.experimental-features = [
@@ -103,6 +104,28 @@
         #media-session.enable = true;
       };
 
+      xdg.portal.enable = true;
+      xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+      # services.flatpak.enable = true;
+
+      services.flatpak = {
+        enable = true;
+        # Add the Flathub remote
+        remotes = [
+          {
+            name = "flathub";
+            location = "https://flathub.org/repo/flathub.flatpakrepo";
+          }
+        ];
+        # Declare packages to install
+        packages = [
+          "net.lutris.Lutris"
+          "com.github.tchx84.Flatseal"
+        ];
+        # Optional: Update on system activation
+        update.onActivation = true;
+      };
       # Enable touchpad support (enabled default in most desktopManager).
       # services.xserver.libinput.enable = true;
 
@@ -153,15 +176,12 @@
       nixpkgs.config.allowUnfree = true;
 
       # flatpak theming? According to nixos manual
-      xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-      xdg.portal.config.common.default = "gtk";
 
       # List packages installed in system profile. To search, run:
       # $ nix search wget
       environment.systemPackages = with pkgs; [
         #vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
         wget
-        ghostty
         sddm-astronaut
         kdePackages.dolphin
         wdisplays
@@ -172,13 +192,13 @@
         gcc
         fastfetch
         p7zip
-        wineWowPackages.base
+        #wineWowPackages.stable
         curl
         unzip
         btop
         uv
         ffmpeg-full
-
+        pavucontrol
       ];
 
       home-manager.users.colby = self.homeModules.colbyModule;

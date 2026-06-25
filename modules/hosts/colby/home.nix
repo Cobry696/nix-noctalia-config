@@ -58,7 +58,7 @@
             }
             {
               name = "python";
-              auto-format = true;
+              auto-format = false;
               language-servers = [
                 "ruff"
                 "pylsp"
@@ -92,6 +92,17 @@
 
       programs.yazi.enable = true;
 
+      programs.ghostty = {
+        enable = true;
+        settings = {
+          font-feature = [
+            "-dlig"
+            "-liga"
+            "-calt"
+          ];
+        };
+      };
+
       home.packages = [
         pkgs.blender
         pkgs.brave
@@ -103,6 +114,11 @@
         pkgs.grsync
         pkgs.openrgb
         pkgs.prismlauncher
+        pkgs.remmina
+        pkgs.yt-dlp
+        pkgs.jellyfin
+        pkgs.reaper
+        pkgs.python314Packages.pudb
       ];
 
       home.pointerCursor = {

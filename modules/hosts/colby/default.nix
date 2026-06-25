@@ -1,9 +1,12 @@
-{ self, inputs, ... }: {
+{ self, inputs, ... }:
+{
 
   flake.nixosConfigurations.colby = inputs.nixpkgs.lib.nixosSystem {
-    modules = [ 
+    modules = [
+      inputs.nix-flatpak.nixosModules.nix-flatpak
       self.nixosModules.colbyConfiguration
       self.nixosModules.myHomeManager
+      # self.nixosModules.myFlatpaks
     ];
   };
 

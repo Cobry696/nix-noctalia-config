@@ -1,0 +1,11 @@
+//other_layout.kdl
+
+layout {
+	pane split_direction="vertical" {
+		pane command="hx ."
+		pane split_direction="horizontal" {
+			pane command="../helio.sh"
+			pane
+		}
+	}
+}

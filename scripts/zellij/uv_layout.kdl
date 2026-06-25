@@ -1,0 +1,11 @@
+// uv_layout.kdl
+
+layout {
+	pane split_direction="vertical" {
+		pane command="uv" { args="run" "hx" "." }
+		pane split_direction="horizontal" {
+			pane command="yazi"
+			pane
+		}
+	}
+}
