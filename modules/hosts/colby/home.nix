@@ -48,6 +48,10 @@
             pylsp = {
               command = "pylsp";
             };
+            tailwindcss-ls = {
+              command = "tailwindcss-language-server";
+              args = [ "--stdio" ];
+            };
           };
 
           language = [
@@ -74,6 +78,33 @@
               # Optional: Configure pylsp settings
               # Note: pylsp configuration is often handled via pylsp's own config files
               # or by passing arguments if the LSP supports it.
+            }
+            {
+              name = "html";
+              language-servers = [
+                "superhtml"
+                "tailwindcss-ls"
+              ];
+            }
+            {
+              name = "css";
+              language-servers = [
+                "tailwindcss-ls"
+              ];
+            }
+            {
+              name = "typescript";
+              language-servers = [
+                "tailwindcss-ls"
+                "typescript-language-server"
+              ];
+            }
+            {
+              name = "svelte";
+              language-servers = [
+                "svelteserver"
+                "tailwindcss-ls"
+              ];
             }
           ];
         };
@@ -119,6 +150,15 @@
         pkgs.jellyfin
         pkgs.reaper
         pkgs.python314Packages.pudb
+        pkgs.ob-xf
+        pkgs.ollama
+        pkgs.nodejs
+        pkgs.direnv
+
+        pkgs.superhtml
+        pkgs.tailwindcss-language-server
+        pkgs.typescript-language-server
+        pkgs.svelte-language-server
       ];
 
       home.pointerCursor = {

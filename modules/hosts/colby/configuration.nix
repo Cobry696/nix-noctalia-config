@@ -16,6 +16,7 @@
         # Include the results of the hardware scan.
         self.nixosModules.colbyHardware
         self.nixosModules.niri
+        # self.nixosModules.musnix
         # self.nixosModules.myFlatpaks
       ];
       # Enable flakes
@@ -108,6 +109,24 @@
       xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
       # services.flatpak.enable = true;
+
+      # environment.variables =
+      #   let
+      #     makePluginPath =
+      #       format:
+      #       (pkgs.lib.makeSearchPath format [
+      #         "$HOME/.nix-profile/lib"
+      #         "/run/current-system/sw/lib"
+      #         "/etc/profiles/per-user/$USER/lib"
+      #       ])
+      #       + ":$HOME/.${format}";
+      #   in
+      #   {
+      #     LV2_PATH = makePluginPath "lv2";
+      #     VST3_PATH = makePluginPath "vst3";
+      #     VST_PATH = makePluginPath "vst";
+      #     LXVST_PATH = makePluginPath "lxvst";
+      #   };
 
       services.flatpak = {
         enable = true;

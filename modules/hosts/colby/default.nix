@@ -6,6 +6,7 @@
       inputs.nix-flatpak.nixosModules.nix-flatpak
       self.nixosModules.colbyConfiguration
       self.nixosModules.myHomeManager
+      # self.nixosModules.musnix
       # self.nixosModules.myFlatpaks
     ];
   };
