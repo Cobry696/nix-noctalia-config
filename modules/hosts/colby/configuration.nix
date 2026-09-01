@@ -53,7 +53,7 @@
       services.udisks2.enable = true;
 
       # Set your time zone.
-      time.timeZone = "America/St_Johns";
+      time.timeZone = "America/Halifax"; # "America/St_Johns"
 
       # Select internationalisation properties.
       i18n.defaultLocale = "en_CA.UTF-8";
@@ -141,6 +141,7 @@
         packages = [
           "net.lutris.Lutris"
           "com.github.tchx84.Flatseal"
+          "io.github.revisto.drum-machine"
         ];
         # Optional: Update on system activation
         update.onActivation = true;
@@ -183,7 +184,31 @@
         enable = true;
       };
 
+      programs.vscode.package = pkgs.vscode.fhsWithPackages (
+        ps: with ps; [
+          lobster
+
+        ]
+      );
+
       programs.nix-ld.enable = true;
+      programs.nix-ld.libraries = with pkgs; [
+        # libwayland-dev
+        wayland-protocols
+        glfw
+        #   stdenv.cc.cc.lib
+        #   libGL
+        #   libGLU
+        #   libxkbcommon
+        #   fontconfig
+        #   libx11
+        #   freetype
+        #   dbus
+        #   libxcb-cursor
+        #   glib
+        #   zstd
+
+      ];
 
       environment.etc."gitconfig".text = ''
                 [user]
@@ -218,6 +243,8 @@
         uv
         ffmpeg-full
         pavucontrol
+        stdenv.cc.cc.lib
+        libreoffice
       ];
 
       home-manager.users.colby = self.homeModules.colbyModule;

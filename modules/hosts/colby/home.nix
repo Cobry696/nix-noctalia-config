@@ -52,6 +52,16 @@
               command = "tailwindcss-language-server";
               args = [ "--stdio" ];
             };
+            julia = {
+              command = "julia";
+              args = [
+                "--project=@LanguageServer"
+                "--startup-file=no"
+                "--history-file=no"
+                "-e"
+                "using LanguageServer; runserver()"
+              ];
+            };
           };
 
           language = [
@@ -84,6 +94,7 @@
               language-servers = [
                 "superhtml"
                 "tailwindcss-ls"
+                "emmet-ls"
               ];
             }
             {
@@ -106,6 +117,14 @@
                 "tailwindcss-ls"
               ];
             }
+            {
+              name = "rust";
+              language-servers = [ "rust-analyzer" ];
+            }
+            {
+              name = "julia";
+              language-servers = [ "julia" ];
+            }
           ];
         };
 
@@ -119,9 +138,19 @@
         };
       };
 
+      programs.mpv = {
+        enable = true;
+        config = {
+          audio-display = "no";
+        };
+      };
+
       programs.zellij.enable = true;
 
-      programs.yazi.enable = true;
+      programs.yazi = {
+        enable = true;
+        shellWrapperName = "yy";
+      };
 
       programs.ghostty = {
         enable = true;
@@ -154,14 +183,28 @@
         pkgs.ollama
         pkgs.nodejs
         pkgs.direnv
+        pkgs.inkscape
+        pkgs.obsidian
+        pkgs.bash-completion
+        pkgs.nix-search-cli
+        pkgs.intel-oneapi-toolkit
+        pkgs.godot
+        pkgs.julia-bin
+        pkgs.lobster
 
         pkgs.superhtml
         pkgs.tailwindcss-language-server
         pkgs.typescript-language-server
         pkgs.svelte-language-server
+        pkgs.vscode-langservers-extracted
+        pkgs.emmet-ls
+        pkgs.rust-analyzer
+
+        pkgs.netcat
       ];
 
       home.pointerCursor = {
+        enable = true;
         gtk.enable = true;
         x11.enable = true;
         package = pkgs.bibata-cursors;
