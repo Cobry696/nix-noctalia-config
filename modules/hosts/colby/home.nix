@@ -62,6 +62,10 @@
                 "using LanguageServer; runserver()"
               ];
             };
+            # clangd = {
+            #   command = "clangd";
+            #   args = [ "--query-driver=/run/current-system/sw/bin/gcc,/usr/bin/clang" ];
+            # };
           };
 
           language = [
@@ -69,6 +73,10 @@
               name = "nix";
               auto-format = true;
               formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
+              language-servers = [
+                "nil"
+                "nixd"
+              ];
             }
             {
               name = "python";
@@ -125,6 +133,10 @@
               name = "julia";
               language-servers = [ "julia" ];
             }
+            # {
+            #   name = "c";
+            #   language-servers = [ "clangd" ];
+            # }
           ];
         };
 
@@ -140,9 +152,12 @@
 
       programs.mpv = {
         enable = true;
-        config = {
-          audio-display = "no";
-        };
+        # config = {
+        #   audio-display = "no";
+        #   opener = {
+        #     audio = "mpv --force-window=no %f";
+        #   };
+        # };
       };
 
       programs.zellij.enable = true;
@@ -150,6 +165,38 @@
       programs.yazi = {
         enable = true;
         shellWrapperName = "yy";
+        settings = {
+          opener = {
+            pdf_viewer = [
+              {
+                run = "tdf %s";
+                block = true;
+                desc = "Open with tdf";
+                for = "unix";
+              }
+            ];
+            python-runner = [
+              {
+                run = "uv run hx %s";
+                block = true;
+                desc = "Open with uv in venv";
+                for = "unix";
+              }
+            ];
+          };
+          open = {
+            prepend_rules = [
+              {
+                mime = "application/pdf";
+                use = [ "pdf_viewer" ];
+              }
+              {
+                url = "*.py";
+                use = [ "python-runner" ];
+              }
+            ];
+          };
+        };
       };
 
       programs.ghostty = {
@@ -161,6 +208,13 @@
             "-calt"
           ];
         };
+      };
+
+      programs.emacs = {
+        enable = true;
+        extraPackages = epkgs: [
+          epkgs.sage-shell-mode
+        ];
       };
 
       home.packages = [
@@ -180,6 +234,7 @@
         pkgs.reaper
         pkgs.python314Packages.pudb
         pkgs.ob-xf
+        pkgs.surge-xt
         pkgs.ollama
         pkgs.nodejs
         pkgs.direnv
@@ -187,10 +242,29 @@
         pkgs.obsidian
         pkgs.bash-completion
         pkgs.nix-search-cli
-        pkgs.intel-oneapi-toolkit
+        #cpkgs.intel-oneapi-toolkit
         pkgs.godot
         pkgs.julia-bin
         pkgs.lobster
+        pkgs.sage
+        pkgs.texliveFull
+        pkgs.kdePackages.cantor
+        pkgs.R
+        pkgs.rstudio
+        pkgs.gimp
+        pkgs.qemu
+        pkgs.distrobox
+        pkgs.tdf
+        pkgs.imagemagick
+        pkgs.ghostscript
+
+        pkgs.cemu
+        pkgs.ukmm
+        #pkgs.joycond
+        pkgs.gamepad-tool
+        pkgs.evtest
+        # pkgs.emacs
+        pkgs.mcpelauncher-ui-qt
 
         pkgs.superhtml
         pkgs.tailwindcss-language-server
@@ -199,8 +273,17 @@
         pkgs.vscode-langservers-extracted
         pkgs.emmet-ls
         pkgs.rust-analyzer
+        # pkgs.llvmPackages.clang-unwrapped
+        pkgs.nil
+        pkgs.nixd
+        pkgs.texlab
 
         pkgs.netcat
+        pkgs.wireguard-tools
+        pkgs.protonvpn-gui
+        pkgs.wireshark
+
+        pkgs.aseprite
       ];
 
       home.pointerCursor = {

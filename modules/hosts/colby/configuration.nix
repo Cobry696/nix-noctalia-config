@@ -25,12 +25,19 @@
         "flakes"
       ];
 
+      # for virt-manager to work
+      programs.dconf.enable = true;
+
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
       # Use latest kernel.
       boot.kernelPackages = pkgs.linuxPackages_latest;
+
+      boot.extraModprobeConfig = ''
+        options bluetooth disable_ertm=1
+      '';
 
       networking.hostName = "nixos"; # Define your hostname.
       # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -43,8 +50,26 @@
       hardware.bluetooth.enable = true;
       hardware.bluetooth.powerOnBoot = true;
 
+      hardware.steam-hardware.enable = true;
+
       # Enable networking
       networking.networkmanager.enable = true;
+      networking.networkmanager.wifi.scanRandMacAddress = false;
+
+      virtualisation.podman = {
+        enable = true;
+        dockerCompat = true;
+      };
+
+      # Enable libvirtd daemon with QEMU
+      virtualisation.libvirtd = {
+        enable = true;
+        qemu = {
+          package = pkgs.qemu_kvm;
+          runAsRoot = true;
+          swtpm.enable = true; # Enables TPM emulation for Windows 11 VMs
+        };
+      };
 
       # Enable battery monitoring
       services.upower.enable = true;
@@ -142,6 +167,11 @@
           "net.lutris.Lutris"
           "com.github.tchx84.Flatseal"
           "io.github.revisto.drum-machine"
+          {
+            bundle = "/home/colby/Documents/Tools/WiiUDownloader-Linux-x86_64.flatpak";
+            appId = "io.github.xpl0itu.wiiudownloader";
+            sha256 = "a4e37b925270892b5b4a3cdf67da5f6771e361d42fbc148f43165cac1ba8cf54";
+          }
         ];
         # Optional: Update on system activation
         update.onActivation = true;
@@ -156,6 +186,7 @@
         extraGroups = [
           "networkmanager"
           "wheel"
+          "libvirtd"
         ];
         packages = with pkgs; [
           #  thunderbird
@@ -163,6 +194,9 @@
       };
 
       services.tailscale.enable = true;
+
+      # Enable virt-manager graphical interface
+      programs.virt-manager.enable = true;
 
       # Install firefox.
       programs.firefox.enable = true;
@@ -194,6 +228,7 @@
       programs.nix-ld.enable = true;
       programs.nix-ld.libraries = with pkgs; [
         # libwayland-dev
+        wayland
         wayland-protocols
         glfw
         #   stdenv.cc.cc.lib
@@ -209,6 +244,18 @@
         #   zstd
 
       ];
+
+      programs.appimage = {
+        enable = true;
+        binfmt = true;
+      };
+
+      programs.appimage.package = pkgs.appimage-run.override {
+        extraPkgs = pkgs: [
+          pkgs.libepoxy
+          pkgs.ffmpeg
+        ];
+      };
 
       environment.etc."gitconfig".text = ''
                 [user]
@@ -245,6 +292,8 @@
         pavucontrol
         stdenv.cc.cc.lib
         libreoffice
+        networkmanagerapplet
+        steam-run
       ];
 
       home-manager.users.colby = self.homeModules.colbyModule;
