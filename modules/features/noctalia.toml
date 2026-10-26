@@ -1,0 +1,158 @@
+[bar.default]
+border_width = 3.5
+capsule = true
+center = [ "workspaces" ]
+color = "on_surface"
+contact_shadow = true
+end = [
+    "tray",
+    "notifications",
+    "clipboard",
+    "network",
+    "bluetooth",
+    "volume",
+    "brightness",
+    "battery",
+    "control-center",
+    "session"
+]
+font_family = "Noto Sans CJK HK"
+icon_color = "secondary"
+start = [ "launcher", "wallpaper", "clock", "media" ]
+widget_spacing = 8
+
+[battery]
+warning_threshold = 20
+
+[brightness]
+minimum_brightness = 0.0099999997764825821
+
+[calendar]
+enabled = true
+
+[dock]
+active_monitor_only = true
+auto_hide = true
+border_width = 3.5
+enabled = true
+launcher_position = "end"
+position = "right"
+radius = 32
+reserve_space = false
+show_dots = true
+
+[location]
+address = "Wolfville, Canada"
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-3" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1258.0
+    output = "DP-3"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[shell.launcher]
+layout = "simple"
+show_app_actions = true
+
+    [shell.launcher.providers.panels]
+    global = true
+
+[shell.panel]
+floating_layer = "top"
+open_near_click_control_center = true
+session_placement = "floating"
+session_position = "center"
+transparency_mode = "glass"
+
+[shell.session]
+grid = true
+grid_columns = 2
+
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = false
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
+
+[theme]
+builtin = "Noctalia"
+community_palette = "Oxocarbon"
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-fruit-salad"
+
+[wallpaper]
+directory = "/home/colby/./myNixOS/Wallpapers"
+
+    [wallpaper.default]
+    path = "/home/colby/./myNixOS/Wallpapers/Night.png"
+
+    [wallpaper.last]
+    path = "/home/colby/./myNixOS/Wallpapers/Night.png"
+
+    [wallpaper.monitors.DP-3]
+    path = "/home/colby/./myNixOS/Wallpapers/Night.png"
+
+[widget.clock]
+format = "{:%-I:%M %p}"

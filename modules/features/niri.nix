@@ -40,11 +40,11 @@
           layout.gaps = 5;
 
           binds = {
-            "Mod+R".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
+            "Mod+R".spawn-sh = "${lib.getExe self'.packages.myNoctalia} msg panel-toggle launcher";
             "Mod+Q".spawn-sh = lib.getExe pkgs.ghostty;
             "Mod+C".close-window = _: { };
 
-            "Mod+X".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call sessionMenu toggle";
+            "Mod+X".spawn-sh = "${lib.getExe self'.packages.myNoctalia} msg panel-toggle session";
 
             "Mod+F".maximize-column = _: { };
             "Mod+Shift+F".fullscreen-window = _: { };

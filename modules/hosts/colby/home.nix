@@ -218,6 +218,7 @@
       };
 
       home.packages = [
+        pkgs.fetch
         pkgs.blender
         pkgs.brave
         pkgs.discord
@@ -257,6 +258,7 @@
         pkgs.tdf
         pkgs.imagemagick
         pkgs.ghostscript
+        pkgs.weka
 
         pkgs.cemu
         pkgs.ukmm
